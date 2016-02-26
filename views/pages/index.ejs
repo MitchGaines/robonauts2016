@@ -1,0 +1,61 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+        
+    <main style="padding-top:60px;">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">Team List</div>
+
+                  <table class="table">
+                      <tr>
+                        <th>Number</th>
+                        <th>Name</th>
+                      </tr>
+                    <%- teams1 %>
+                  </table>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">Contributed Score Ranking</div>
+
+                  <table class="table">
+                      <tr>
+                        <th>Team</th>
+                        <th>Avg. Score</th>
+                        <th>Offensive Rating</th>
+                      </tr>
+                    <%- teams2 %>
+                  </table>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">Defensive Penetrator Ranking</div>
+                    
+                  <table class="table">
+                  </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+    
+</body>
+</html>
