@@ -26,33 +26,112 @@
         </div>
         <hr />
         <div class="row">
-            <div class="col-lg-3">
-                <h3 style="margin-top:0;"><small>Avg. Score: <%= avg_score %></small></h3>
-                <h3 style="margin-top:0;"><small>High Made: <%= perc_high_made %>%</small></h3>
+            <div class="col-lg-4">
+                <h3 style="margin-top:0;"><small>Avg. Score: <%= avg_auton_score %> / <%= avg_score %></small></h3><hr style="margin:0;" />
+                <h4><u>Autonomous Data</u></h4>
+                <h4 style="margin-top:0;"><small>PC: <%= auton_pc_crosses %> / <%= auton_pc_attempts %></small> / <small>CF: <%= auton_cf_crosses %> / <%= auton_cf_attempts %></small> / <small>M: <%= auton_m_crosses %> / <%= auton_m_attempts %></small> / <small>R: <%= auton_r_crosses %> / <%= auton_r_attempts %></small> / <small>DB: <%= auton_db_crosses %> / <%= auton_db_attempts %></small></h4><hr style="margin:0;" />
+                <h4 style="margin-top:0;"><small>SP: <%= auton_sp_crosses %> / <%= auton_sp_attempts %></small> / <small>RW: <%= auton_rw_crosses %> / <%= auton_rw_attempts %></small> / <small>RT: <%= auton_rt_crosses %> / <%= auton_rt_attempts %></small> / <small>LB: <%= auton_lb_crosses %> / <%= auton_lb_attempts %></small></h4><hr style="margin:0;" />
+                <h4 style="margin-top:0;"><small>High Goal: <%= auton_high_made %>/<%= auton_high_attempts %></small> / <small>Low Goal: <%= auton_low_made %>/<%= auton_low_attempts %></small></h4><hr style="margin:0;" />
+                <h4><u>Tele-Op Data</u></h4>
+                <h4 style="margin-top:0;"><small>High Goal: <%= high_made %>/<%= high_attempts %></small> / <small>Low Goal: <%= low_made %>/<%= low_attempts %> </small></h4><hr style="margin:0;" />
+                <h4 style="margin-top:0;"><small>Avg. Floor Intakes: <%= avg_intakes %></small></h4><hr style="margin:0;" />
+                <h4 style="margin-top:0;"><small>Knockouts: <%= knockouts %></small></h4><hr style="margin:0;" />
+                <h4 style="margin-top:0;"><small>Avg. Bully Rating: <%= bully_rating %></small></h4><hr style="margin:0;" />
+                <h4 style="margin-top:0;"><small>Fouls: <%= fouls %></small></h4><hr style="margin:0;" />
+                <h4><u>Ranking Averages & Totals</u></h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Defense</th>
+                            <th>S/Attempt</th>
+                            <th>Rank</th>
+                            <th>Stucks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LB</td>
+                            <td><%= lb_success %> / <%= lb_attempts %></td>
+                            <td><%= lb_speed %></td>
+                            <td><%= lb_stuck %></td>
+                        </tr>
+                        <tr>
+                            <td>PC</td>
+                            <td><%= a1_success %> / <%= a1_attempts %></td>
+                            <td><%= a1_speed %></td>
+                            <td><%= a1_stuck %></td>
+                        </tr>
+                        <tr>
+                            <td>CF</td>
+                            <td><%= a2_success %> / <%= a2_attempts %></td>
+                            <td><%= a2_speed %></td>
+                            <td><%= a2_stuck %></td>
+                        </tr>
+                        <tr>
+                            <td>M</td>
+                            <td><%= b1_success %> / <%= b1_attempts %></td>
+                            <td><%= b1_speed %></td>
+                            <td><%= b1_stuck %></td>
+                        </tr>
+                        <tr>
+                            <td>R</td>
+                            <td><%= b2_success %> / <%= b2_attempts %></td>
+                            <td><%= b2_speed %></td>
+                            <td><%= b2_stuck %></td>
+                        </tr>
+                        <tr>
+                            <td>DB</td>
+                            <td><%= c1_success %> / <%= c1_attempts %></td>
+                            <td><%= c1_speed %></td>
+                            <td><%= c1_stuck %></td>
+                        </tr>
+                        <tr>
+                            <td>SP</td>
+                            <td><%= c2_success %> / <%= c2_attempts %></td>
+                            <td><%= c2_speed %></td>
+                            <td><%= c2_stuck %></td>
+                        </tr>
+                        <tr>
+                            <td>RW</td>
+                            <td><%= d1_success %> / <%= d1_attempts %></td>
+                            <td><%= d1_speed %></td>
+                            <td><%= d1_stuck %></td>
+                        </tr>
+                        <tr>
+                            <td>RT</td>
+                            <td><%= d2_success %> / <%= d2_attempts %></td>
+                            <td><%= d2_speed %></td>
+                            <td><%= d2_stuck %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4><u>End Game</u></h4>
+                <h4 style="margin-top:0;"><small>Hang: <%= hang_made %> / <%= hang_attempts %></small></h4><hr style="margin:0;" />
+                <h4 style="margin-top:0;"><small>Challenge: <%= challenge_made %> / <%= challenge_attempts %></small></h4><hr style="margin:0;" />
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="font-size: 10px;">
+            <div class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-offset-0 col-xs-offset-0 col-sm-12 col-xs-12" style="font-size: 10px;">
                 <canvas id="trend_line"></canvas>
 
                 <script type="text/javascript">
                     var data = {
-                    labels: [<%= trend_labels %> 'Next'],
-                    datasets: [
-                        {
-                            label: "Data",
-                            fillColor: "rgba(151,187,205,0.2)",
-                            strokeColor: "rgba(151,187,205,1)",
-                            pointColor: "rgba(151,187,205,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(151,187,205,1)",
-                            data: [<%= trend_data %>]
-                        }
-                    ]
-                };
+                        labels: [<%= trend_labels %> 'Next'],
+                        datasets: [
+                            {
+                                label: "Data",
+                                fillColor: "rgba(151,187,205,0.2)",
+                                strokeColor: "rgba(151,187,205,1)",
+                                pointColor: "rgba(151,187,205,1)",
+                                pointStrokeColor: "#fff",
+                                pointHighlightFill: "#fff",
+                                pointHighlightStroke: "rgba(151,187,205,1)",
+                                data: [<%= trend_data %>]
+                            }
+                        ]
+                    };
                     window.onload = function()
                     {
                         var ctx = document.getElementById("trend_line").getContext("2d");
-                        var myLineChart = new Chart(ctx).Line(data,  {responsive: true});
+                        var myLineChart = new Chart(ctx).Line(data,  {responsive: true, scaleOverride: true, scaleSteps:10, scaleStepWidth:10, scaleStartValue:0});
                     }
                 </script>
             </div>
