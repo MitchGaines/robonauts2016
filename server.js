@@ -1,5 +1,5 @@
 // server.js
-// load the things we need
+// only thing that ever needs to be changed is IP address of 'host' in pool variable to location of server computer
 var mysql = require('mysql');
 var rest = require("./REST.js");
 var md5 = require("MD5");
